@@ -13,7 +13,7 @@
 
               <span>
                 <img class="hidden-for-small-only hide-for-print" src="/assets/img/logo-sweat-with-kayla-color.png" alt="Sweat with Kayla Logo" />
-                <div class="logo-title medium-margin-left-10">weekday</div>
+                <div class="logo-title medium-margin-left-10" *ngIf="currentUser">{{currentUser.id}}</div>
               </span>
 
               <img class="print-only" src="/assets/img/sweat-logo-drop@2x.png" alt="Sweat with Kayla Logo" />
@@ -29,7 +29,7 @@
           <li><a href="#!/food">food</a></li>
           <li class="profile">
             <a href="#!/account/settings">
-            <img alt="Profile" class="img-circle" src='' width="50" height="50">
+            <img alt="Profile" class="img-circle" width="50" height="50">
             </a>
           </li>
         </ul>
