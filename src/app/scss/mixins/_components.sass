@@ -1,0 +1,76 @@
+// Border
+@each $name, $color in $color-map
+  .border-#{$name}
+    border: 1px solid $color !important
+
+  .bg-#{$name}
+    background: $color !important
+
+  path
+    &.#{$name}
+      stroke: $color
+
+  .badge-tag.#{$name}
+    position: relative
+    display: inline-block
+    text-align: center
+    padding: rem-calc(5 30)
+    border: 1px solid $color
+    border-radius: 1000rem
+    color: $color
+    text-transform: uppercase
+    font-size: rem-calc(12)
+    margin-bottom: rem-calc(15)
+    &:before, &:after
+      position: absolute
+      top: 50%
+      margin-top: -1px
+      border-top: 1px solid $color
+      display: inline-block
+      content: ' '
+      width: 20%
+    &:before
+      left: -20%
+      margin-left: -3px
+    &:after
+      right: -20%
+      margin-right: -3px
+
+.box-shadow
+  +box-shadow(0 5px 40px rgba(0, 0, 0, 0.2))
+
+.box-radius
+  border-radius: 6px
+
+.alert-view
+  +background(rgba(0,0,0,0.8))
+  @extend .fade
+  display: block
+  content: ' '
+  position: fixed
+  z-index: 1000
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  .content
+    @extend .middle-small
+    background: white
+    border-radius: $global-radius
+    width: rem-calc(400) !important
+    max-width: 80%
+    padding: rem-calc(0 20 30 20)
+    text-align: center
+    .icon
+      margin: 0 auto
+      margin-top: rem-calc(-40)
+      margin-bottom: rem-calc(20)
+      width: rem-calc(80)
+      height: rem-calc(80)
+      border-radius: 100%
+      border: 4px solid white
+      color: white
+      line-height: 2.3
+      font-size: rem-calc(30)
+    > *:last-child
+      margin-bottom: 0

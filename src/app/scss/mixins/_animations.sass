@@ -1,0 +1,107 @@
+// Animation
+=animation($animate...)
+  $max: length($animate)
+  $animations: ''
+
+  @for $i from 1 through $max
+    $animations: #{$animations + nth($animate, $i)}
+
+    @if $i < $max
+      $animations: #{$animations + ", "}
+
+  -webkit-animation: $animations
+  -moz-animation:    $animations
+  -o-animation:      $animations
+  animation:         $animations
+
+// Keyframes
+=keyframes($animationName)
+  @-webkit-keyframes #{$animationName}
+    @content
+
+  @-moz-keyframes #{$animationName}
+    @content
+
+  @-o-keyframes #{$animationName}
+    @content
+
+  @keyframes #{$animationName}
+    @content
+
+.fade
+  &.ng-hide
+    opacity: 0
+  &.ng-hide-remove,
+  &.ng-hide-add
+    display: block !important
+    +transition(opacity 0.15s ease-in-out)
+
+.fadeout
+  +transition(opacity 0.5s ease-in-out)
+  +opacity(0)
+
+.fadein
+  +transition(opacity 0.5s ease-in-out)
+  +opacity(1)
+
+.animate-show
+  opacity: 1
+  &.ng-hide-add, &.ng-hide-remove
+    transition: all linear 2.5s
+  &.ng-hide
+    opacity: 0
+
+.transit
+  +transition(all 0.15s ease-in-out)
+
+.hover-scale:hover
+  +transform(scale(1.05))
+
+// Spinner
++keyframes(spin)
+  0%
+    +transform(rotate(0deg))
+  100%
+    +transform(rotate(360deg))
+
+// Water tracker
++keyframes(FloatingA)
+  0%, 50%, 100%
+    +transform(translate(0, 0))
+  25%
+    +transform(translate(5px, -20px))
+  75%
+    +transform(translate(-3px, -15px))
+
++keyframes(FloatingB)
+  0%, 100%
+    +transform(translate(5px, -15px))
+  50%
+    +transform(translate(-3px, -20px))
+  25%, 75%
+    +transform(translate(0, 0))
+
+// Bouncing arrow on workout page
++keyframes(bounce)
+  0%, 20%, 50%, 80%, 100%
+    +transform(translateY(0))
+  40%
+    +transform(translateY(-20px))
+  60%
+    +transform(translateY(-15px))
+
+.bounce
+  +animation(bounce 2s infinite)
+
+// Page transitions
++keyframes(slideInFromRight)
+  from
+    +transform(translateX(10%))
+    +opacity(0)
+  to
+    +transform(translateX(0))
+    +opacity(1)
+
+.ng-enter
+  +animation(slideInFromRight 0.3s both ease-in)
+  z-index: 9999
