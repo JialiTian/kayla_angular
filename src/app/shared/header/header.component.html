@@ -13,7 +13,7 @@
 
               <span>
                 <img class="hidden-for-small-only hide-for-print" src="/assets/img/logo-sweat-with-kayla-color.png" alt="Sweat with Kayla Logo" />
-                <div class="logo-title medium-margin-left-10" *ngIf="currentUser">{{currentUser.id}}</div>
+                <div class="logo-title medium-margin-left-10">friday</div>
               </span>
 
               <img class="print-only" src="/assets/img/sweat-logo-drop@2x.png" alt="Sweat with Kayla Logo" />
@@ -23,13 +23,13 @@
       </ul>
       <section class="top-bar-section">
         <ul class="right">
-          <li><a href="#!/dashboard">today</a></li>
-          <li><a href="#!/planner">planner</a></li>
+          <li><a routerLink="/" routerLinkActive="active">today</a></li>
+          <li><a routerLink="/planner" routerLinkActive="active">planner</a></li>
           <li><a href="#!/education">education</a></li>
           <li><a href="#!/food">food</a></li>
           <li class="profile">
-            <a href="#!/account/settings">
-            <img alt="Profile" class="img-circle" width="50" height="50">
+            <a href="#!/account/settings" *ngIf="currentUser">
+              <img alt="Profile" class="img-circle" width="50" height="50" src={{currentUser.image_url}}>
             </a>
           </li>
         </ul>
